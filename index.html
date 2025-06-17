@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>frak</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('background.png') center center / cover no-repeat fixed;
+      color: #e2d8c3;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .logo {
+      width: 240px;
+      margin-bottom: 30px;
+      filter: drop-shadow(0 0 4px #4a3820);
+    }
+
+    #typewriter {
+      font-size: 1.25rem;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #e2d8c3;
+      width: fit-content;
+      animation: typing 4s steps(55, end), blink 0.7s step-end infinite;
+      text-align: center;
+      max-width: 90vw;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .enter-button {
+      margin-top: 60px;
+      padding: 12px 28px;
+      font-size: 1rem;
+      border: 1px solid #e2d8c3;
+      background: rgba(255, 230, 180, 0.05);
+      color: #e2d8c3;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 10px;
+    }
+
+    .enter-button:hover {
+      background: rgba(255, 230, 180, 0.15);
+      transform: scale(1.05);
+    }
+
+    .fade-out {
+      animation: fadeOut 0.5s ease forwards;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 로고 이미지 -->
+  <img class="logo" src="file-0000000084f46230859733880a7f52e4" alt="frak logo">
+
+  <!-- 타자기 애니메이션 문구 -->
+  <div id="typewriter">
+    Frak is not here to pump. Frak is not here to dump. Frak is just... here.
+  </div>
+
+  <!-- Enter 버튼 -->
+  <button class="enter-button" id="enterBtn">ENTER</button>
+
+  <!-- 음악 자동 재생 -->
+  <audio id="frak-audio" src="Frak.mp3" autoplay loop></audio>
+
+  <script>
+    const btn = document.getElementById('enterBtn');
+    const body = document.body;
+
+    btn.addEventListener('click', () => {
+      body.classList.add('fade-out');
+      setTimeout(() => {
+        window.location.href = 'loading.html';
+      }, 500);
+    });
+  </script>
+</body>
+</html>

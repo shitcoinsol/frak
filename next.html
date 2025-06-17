@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>frak - gallery</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('background.png') center center / cover no-repeat fixed;
+      color: #e2d8c3;
+      font-family: 'Courier New', monospace;
+      overflow-x: hidden;
+    }
+
+    .audio-control {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      z-index: 1000;
+      filter: drop-shadow(0 0 4px #4a3820);
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      padding: 100px 40px 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .card {
+      backdrop-filter: blur(12px);
+      background: rgba(90, 75, 50, 0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 236, 210, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .card img {
+      width: 100%;
+      display: block;
+      cursor: pointer;
+    }
+
+    .token-info {
+      background-image: url('file-000000006c2061f79144ae2468ff325a');
+      background-size: cover;
+      background-position: center;
+      color: #f4ead3;
+      padding: 30px;
+      border-radius: 16px;
+      max-width: 800px;
+      margin: 60px auto;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      font-family: 'Courier New', monospace;
+    }
+
+    .token-info h2 {
+      margin-top: 0;
+      font-size: 1.8rem;
+    }
+
+    .copy-btn {
+      background: rgba(255, 230, 180, 0.1);
+      border: 1px solid #e2d8c3;
+      color: #e2d8c3;
+      padding: 6px 10px;
+      margin-left: 10px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+    .copy-btn:hover {
+      background: rgba(255, 230, 180, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .gallery {
+        padding: 80px 20px;
+      }
+
+      .token-info {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img id="audioToggle" class="audio-control" src="file-BTpivFNs4irN5HNt3Ht3y3" alt="Pause" />
+  <audio id="frak-audio" src="Frak.mp3" autoplay loop></audio>
+
+  <div class="gallery">
+    <div class="card"><img src="gallery1.png" download /></div>
+    <div class="card"><img src="gallery2.png" download /></div>
+    <div class="card"><img src="gallery3.png" download /></div>
+    <div class="card"><img src="gallery4.png" download /></div>
+    <div class="card"><img src="gallery5.png" download /></div>
+    <div class="card"><img src="gallery6.png" download /></div>
+    <div class="card"><img src="gallery7.png" download /></div>
+    <div class="card"><img src="gallery8.png" download /></div>
+    <div class="card"><img src="gallery9.png" download /></div>
+    <div class="card"><img src="gallery10.png" download /></div>
+    <div class="card"><img src="gallery11.png" download /></div>
+    <div class="card"><img src="gallery12.png" download /></div>
+    <div class="card"><img src="gallery13.png" download /></div>
+    <div class="card"><img src="gallery14.png" download /></div>
+    <div class="card"><img src="gallery15.png" download /></div>
+    <div class="card"><img src="gallery16.png" download /></div>
+    <div class="card"><img src="gallery17.png" download /></div>
+    <div class="card"><img src="gallery18.png" download /></div>
+    <div class="card"><img src="gallery19.png" download /></div>
+    <div class="card"><img src="gallery20.png" download /></div>
+  </div>
+
+  <div class="token-info">
+    <h2>Token Info</h2>
+    <p><strong>Name:</strong> Frak</p>
+    <p><strong>Ticker:</strong> FRAK</p>
+    <p><strong>Chain:</strong> Solana</p>
+    <p><strong>Supply:</strong> 1,000,000,000</p>
+    <p>
+      <strong>CA:</strong>
+      <span id="ca-text">So1anaFakeAddress123456789</span>
+      <button class="copy-btn" onclick="copyCA()">Copy</button>
+    </p>
+  </div>
+
+  <script>
+    const audio = document.getElementById('frak-audio');
+    const toggle = document.getElementById('audioToggle');
+
+    toggle.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        toggle.src = 'file-BTpivFNs4irN5HNt3Ht3y3'; // Pause icon
+      } else {
+        audio.pause();
+        toggle.src = 'file-XPHXPmLuJtDHTi8fooYYyB'; // Play icon
+      }
+    });
+
+    function copyCA() {
+      const text = document.getElementById("ca-text").innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Contract address copied!");
+      });
+    }
+  </script>
+</body>
+</html>
