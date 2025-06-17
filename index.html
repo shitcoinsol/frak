@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>frak</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('background.png') center center / cover no-repeat fixed;
+      color: #e2d8c3;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      cursor: url('frak-cursor.png'), auto;
+    }
+    .logo {
+      width: 240px;
+      margin-bottom: 30px;
+      filter: drop-shadow(0 0 4px #4a3820);
+    }
+    .typewriter {
+      font-size: 1.25rem;
+      max-width: 90vw;
+      text-align: center;
+    }
+    .line {
+      display: block;
+      width: 0;
+      overflow: hidden;
+      border-right: 2px solid #e2d8c3;
+      white-space: nowrap;
+      visibility: hidden;
+    }
+    @keyframes typing {
+      from {{ width: 0 }}
+      to {{ width: 100% }}
+    }
+    @keyframes blink {
+      50% {{ border-color: transparent; }}
+    }
+    .enter-image {
+      margin-top: 50px;
+      width: 180px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      display: block;
+    }
+    .enter-image:hover {
+      transform: scale(1.05);
+    }
+    .fade-out {
+      animation: fadeOut 0.5s ease forwards;
+    }
+    @keyframes fadeOut {
+      to {{ opacity: 0; }}
+    }
+    @media (max-width: 600px) {
+      .typewriter {
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+      .enter-image {
+        width: 140px;
+        margin-top: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img class="logo" src="file-0000000084f46230859733880a7f52e4" alt="frak logo">
+  <div class="typewriter">
+    <span id="line1" class="line">Frak is not here to pump.</span><br>
+    <span id="line2" class="line">Frak is not here to dump.</span><br>
+    <span id="line3" class="line">Frak is just... here.</span>
+  </div>
+  <img class="enter-image" src="enter-button.png" alt="Enter" id="enterBtn" />
+  <script>
+    const lines = [
+      document.getElementById('line1'),
+      document.getElementById('line2'),
+      document.getElementById('line3')
+    ];
+    const delays = [0, 2600, 5200];
+    lines.forEach((line, i) => {{
+      setTimeout(() => {{
+        line.style.visibility = 'visible';
+        line.style.animation = 'typing 2s steps(30, end) forwards, blink 0.7s step-end infinite';
+      }}, delays[i]);
+    }});
+
+    document.getElementById('enterBtn').addEventListener('click', () => {{
+      document.body.classList.add('fade-out');
+      setTimeout(() => {{
+        window.location.href = 'loading.html';
+      }}, 500);
+    }});
+  </script>
+</body>
+</html>

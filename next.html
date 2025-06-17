@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>frak - gallery</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('background.png') center center / cover no-repeat fixed;
+      color: #e2d8c3;
+      font-family: 'Courier New', monospace;
+      overflow-x: hidden;
+      cursor: url('frak-cursor.png'), auto;
+    }
+    .audio-control {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    .header-image {
+      max-width: 700px;
+      width: 90%;
+      margin: 60px auto 20px;
+      display: block;
+      border: 6px solid #8a6c3e;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+    .token-info {
+      position: relative;
+      width: 800px;
+      max-width: 95vw;
+      margin: 40px auto;
+    }
+    .token-info img {
+      width: 100%;
+      display: block;
+      border-radius: 16px;
+    }
+    .token-text {
+      position: absolute;
+      top: 20%;
+      left: 35%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 1rem;
+      color: #f4ead3;
+    }
+    .token-text span {
+      line-height: 1.6;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .copy-btn {
+      background: rgba(255, 230, 180, 0.1);
+      border: 1px solid #e2d8c3;
+      color: #e2d8c3;
+      padding: 4px 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      border-radius: 6px;
+    }
+    .gallery-title {
+      text-align: center;
+      font-size: 1.6rem;
+      margin: 60px 0 20px;
+      font-weight: bold;
+      color: #f5deb3;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      padding: 0 40px 60px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .card {
+      backdrop-filter: blur(12px);
+      background: rgba(90, 75, 50, 0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 236, 210, 0.15);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.02);
+    }
+    .card img {
+      width: 100%;
+      display: block;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+  
+    @media (max-width: 768px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 20px 40px;
+      }
+      .gallery-title {
+        font-size: 1.3rem;
+        margin-top: 40px;
+      }
+      .header-image {
+        display: block;
+        width: 90%;
+        margin-top: 30px;
+      }
+      .token-info {
+        position: static !important;
+        width: 95vw;
+        text-align: center;
+      }
+      .token-text {
+        position: static !important;
+        margin-top: 20px;
+        padding: 0 10px;
+        font-size: 0.9rem;
+      }
+    }
+    </style>
+</head>
+<body>
+  <img class="audio-control" id="audioToggle" src="pause_button.png" alt="Pause" />
+  <audio id="frak-audio" src="Frak.mp3" autoplay loop></audio>
+
+  <img class="header-image reveal" src="file-9QEUnJmsxxo4gT39mrgCDf" alt="Frak Portrait" />
+
+  <div class="token-info reveal">
+    <img src="token-info-card.png" alt="Token Info Card">
+    <div class="token-text">
+      <span><strong>Name:</strong> Frak</span>
+      <span><strong>Ticker:</strong> FRAK</span>
+      <span><strong>Chain:</strong> Solana</span>
+      <span><strong>Supply:</strong> 1,000,000,000</span>
+      <span><strong>CA:</strong> <span id="ca-text" data-full="So1anaFakeAddress123456789">So1a...6789</span>
+        <button class="copy-btn" onclick="copyCA()">Copy</button>
+      </span>
+    </div>
+  </div>
+
+  <div class="gallery-title reveal">Frak Gallery</div>
+  <div class="gallery">
+    <div class="card"><img src="gallery1.png" download /></div>
+    <div class="card"><img src="gallery2.png" download /></div>
+    <div class="card"><img src="gallery3.png" download /></div>
+    <div class="card"><img src="gallery4.png" download /></div>
+    <div class="card"><img src="gallery5.png" download /></div>
+    <div class="card"><img src="gallery6.png" download /></div>
+    <div class="card"><img src="gallery7.png" download /></div>
+    <div class="card"><img src="gallery8.png" download /></div>
+    <div class="card"><img src="gallery9.png" download /></div>
+    <div class="card"><img src="gallery10.png" download /></div>
+    <div class="card"><img src="gallery11.png" download /></div>
+    <div class="card"><img src="gallery12.png" download /></div>
+    <div class="card"><img src="gallery13.png" download /></div>
+    <div class="card"><img src="gallery14.png" download /></div>
+    <div class="card"><img src="gallery15.png" download /></div>
+    <div class="card"><img src="gallery16.png" download /></div>
+    <div class="card"><img src="gallery17.png" download /></div>
+    <div class="card"><img src="gallery18.png" download /></div>
+    <div class="card"><img src="gallery19.png" download /></div>
+    <div class="card"><img src="gallery20.png" download /></div>
+  </div>
+
+  <script>
+    const audio = document.getElementById('frak-audio');
+    const toggle = document.getElementById('audioToggle');
+    toggle.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        toggle.setAttribute('src', 'pause_button.png');
+      } else {
+        audio.pause();
+        toggle.setAttribute('src', 'play_button.png');
+      }
+    });
+
+    function copyCA() {
+      const ca = document.getElementById("ca-text").getAttribute("data-full");
+      navigator.clipboard.writeText(ca).then(() => {
+        alert("Contract address copied!");
+      });
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.card').forEach((card, i) => {
+      card.classList.add('reveal');
+      card.style.transitionDelay = `$1520ms`;
+      observer.observe(card);
+    });
+  </script>
+</body>
+</html>
